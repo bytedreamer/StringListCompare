@@ -1,0 +1,52 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "/Users/bytedreamer/Projects/StringListCompare/StringListCompare.csproj",
+    "projectName": "StringListCompare",
+    "projectPath": "/Users/bytedreamer/Projects/StringListCompare/StringListCompare.csproj",
+    "outputPath": "/Users/bytedreamer/Projects/StringListCompare/obj/",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "netstandard2.0"
+    ],
+    "frameworks": {
+      "netstandard2.0": {
+        "projectReferences": {}
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netstandard2.0": {
+      "dependencies": {
+        "Microsoft.AspNetCore.Blazor.Browser": {
+          "target": "Package",
+          "version": "[0.8.0-preview1-20181121.1, )"
+        },
+        "Microsoft.AspNetCore.Blazor.Build": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[0.8.0-preview1-20181121.1, )"
+        },
+        "NETStandard.Library": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.0.3, )",
+          "autoReferenced": true
+        }
+      },
+      "imports": [
+        "net461"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}

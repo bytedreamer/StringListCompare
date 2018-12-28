@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm align-content-center text-center">
+            <textarea bind="@StringList1"></textarea>
+            <h5>1st list of strings separated by EOL</h5>
+        </div>
+        <div class="col-sm align-content-center text-center">
+            <textarea bind="@StringList2"></textarea>
+            <h5>2nd list of strings separated by EOL</h5>
+        </div>
+    </div>
+</div>
+
+@functions {
+    [Parameter]
+    private string StringList1 { get; set; }
+    
+    [Parameter]
+    private Action<string> StringList1Changed { get; set; }
+
+    [Parameter]
+    private string StringList2 { get; set; }
+}

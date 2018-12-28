@@ -1,0 +1,29 @@
+﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+
+html, body {
+
+}
+
+textarea {
+    overflow: auto;
+    resize: none;
+    width:100%;
+}
+
+.string-list-input {
+    margin-top: 2em;
+    max-width: 800px;
+}
+
+.string-list-input textarea {
+    height: 10em;
+}
+
+.string-list-action {
+    max-width: 800px;
+}
+
+.string-list-output {
+    margin-top: 2em;
+    max-width: 800px;
+}
