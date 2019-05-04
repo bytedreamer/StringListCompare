@@ -9,7 +9,7 @@ namespace StringListCompare
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IWebAssemblyHostBuilder CreateHostBuilder(string[] args) =>
+        private static IWebAssemblyHostBuilder CreateHostBuilder(string[] args) =>
             BlazorWebAssemblyHost.CreateDefaultBuilder()
                 .UseBlazorStartup<Startup>();
     }

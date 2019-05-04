@@ -1,0 +1,82 @@
+﻿@page "/"
+@using Microsoft.AspNetCore.Components
+
+<div class="container">
+    <div class="row">
+        <h1>String List Compare</h1>
+    </div>
+    <div class="row">
+        A simple online tool to compare a list of strings.
+    </div>
+    <div class="row string-list-input">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm align-content-center text-center">
+                    <textarea bind="@_stringList1" oninput="@ListChanged"></textarea>
+                    <h5>1st list of strings separated by new lines</h5>
+                </div>
+                <div class="col-sm align-content-center text-center">
+                    <textarea bind="@_stringList2" oninput="@ListChanged"></textarea>
+                    <h5>2nd list of strings separated by new lines</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center string-list-action">
+        <button id="CompareButton" type="button" class="btn btn-primary" onclick="@Compare">Compare</button>
+    </div>
+    <div class="row string-list-input @Collapsed">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm align-content-center text-center">
+                    <textarea bind="@_except1" readonly></textarea>
+                    <h5>Strings found list 1 but not in list 2</h5>
+                </div>
+                <div class="col-sm align-content-center text-center">
+                    <textarea bind="@_except2" readonly></textarea>
+                    <h5>Strings found list 2 but not in list 1</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row string-list-input @Collapsed">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm align-content-center text-center">
+                    <textarea bind="@_intersect" readonly></textarea>
+                    <h5>Strings found in list 1 and 2</h5>
+                </div>
+                <div class="col-sm align-content-center text-center">
+                    <textarea bind="@_union" readonly></textarea>
+                    <h5>Combination of strings found in both list 1 and 2</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions {
+    string _stringList1 = string.Empty, _stringList2 = string.Empty, _except1, _except2, _intersect, _union;
+    bool _showResults;
+   
+    string Collapsed => _showResults ? null : "collapse";
+
+    void ListChanged()
+    {
+        _showResults = false;
+    }
+
+    void Compare(UIMouseEventArgs e)
+    {
+        string[] compareString1 = _stringList1.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
+        string[] compareString2 = _stringList2.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
+
+        _except1 = string.Join(Environment.NewLine, compareString1.Except(compareString2));
+        _except2 = string.Join(Environment.NewLine, compareString2.Except(compareString1));
+        _intersect = string.Join(Environment.NewLine, compareString1.Intersect(compareString2));
+        _union = string.Join(Environment.NewLine, compareString1.Union(compareString2));
+
+        _showResults = true;
+    }
+
+}
