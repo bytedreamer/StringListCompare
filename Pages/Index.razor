@@ -1,5 +1,5 @@
 ﻿@page "/"
-@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Web
 
 <div class="container">
     <div class="row">
@@ -12,18 +12,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm align-content-center text-center">
-                    <textarea bind="@_stringList1" oninput="@ListChanged"></textarea>
+                    <textarea bind="@_stringList1" @oninput="ListChanged"></textarea>
                     <h5>1st list of strings separated by new lines</h5>
                 </div>
                 <div class="col-sm align-content-center text-center">
-                    <textarea bind="@_stringList2" oninput="@ListChanged"></textarea>
+                    <textarea bind="@_stringList2" @oninput="ListChanged"></textarea>
                     <h5>2nd list of strings separated by new lines</h5>
                 </div>
             </div>
         </div>
     </div>
     <div class="row justify-content-center string-list-action">
-        <button id="CompareButton" type="button" class="btn btn-primary" onclick="@Compare">Compare</button>
+        <button id="CompareButton" type="button" class="btn btn-primary" @onclick="Compare">Compare</button>
     </div>
     <div class="row string-list-input @Collapsed">
         <div class="container">
@@ -61,12 +61,12 @@
    
     string Collapsed => _showResults ? null : "collapse";
 
-    void ListChanged()
+    void ListChanged(ChangeEventArgs eventArgs)
     {
         _showResults = false;
     }
 
-    void Compare(UIMouseEventArgs e)
+    void Compare(MouseEventArgs eventArgs)
     {
         string[] compareString1 = _stringList1.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
         string[] compareString2 = _stringList2.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
