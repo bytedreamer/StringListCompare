@@ -1,5 +1,6 @@
 ﻿@page "/"
-@using Microsoft.AspNetCore.Components.Web
+@using System
+@using System.Linq
 
 <div class="container">
     <div class="row">
@@ -12,11 +13,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm align-content-center text-center">
-                    <textarea bind="@_stringList1" @oninput="ListChanged"></textarea>
+                    <textarea @bind="_stringList1" @oninput="ListChanged"></textarea>
                     <h5>1st list of strings separated by new lines</h5>
                 </div>
                 <div class="col-sm align-content-center text-center">
-                    <textarea bind="@_stringList2" @oninput="ListChanged"></textarea>
+                    <textarea @bind="_stringList2" @oninput="ListChanged"></textarea>
                     <h5>2nd list of strings separated by new lines</h5>
                 </div>
             </div>
@@ -29,11 +30,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm align-content-center text-center">
-                    <textarea bind="@_except1" readonly></textarea>
+                    <textarea @bind="_except1" readonly></textarea>
                     <h5>Strings found list 1 but not in list 2</h5>
                 </div>
                 <div class="col-sm align-content-center text-center">
-                    <textarea bind="@_except2" readonly></textarea>
+                    <textarea @bind="_except2" readonly></textarea>
                     <h5>Strings found list 2 but not in list 1</h5>
                 </div>
             </div>
@@ -43,11 +44,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm align-content-center text-center">
-                    <textarea bind="@_intersect" readonly></textarea>
+                    <textarea @bind="_intersect" readonly></textarea>
                     <h5>Strings found in list 1 and 2</h5>
                 </div>
                 <div class="col-sm align-content-center text-center">
-                    <textarea bind="@_union" readonly></textarea>
+                    <textarea @bind="_union" readonly></textarea>
                     <h5>Combination of strings found in both list 1 and 2</h5>
                 </div>
             </div>
@@ -61,7 +62,7 @@
    
     string Collapsed => _showResults ? null : "collapse";
 
-    void ListChanged(ChangeEventArgs eventArgs)
+    void ListChanged()
     {
         _showResults = false;
     }
